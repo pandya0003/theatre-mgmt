@@ -1,0 +1,1 @@
+INSERT INTO "movie" ("id", "theatre_id", "movie_name", "movie_type", "show_release_date", "show_end_date", "total_duration") VALUES (1, 'Audi-1', 'The Shawshank Redemption', 'HINDI', '2023-02-31 23.59.59+07:30','2023-12-31 23.59.59+07:30', 90);

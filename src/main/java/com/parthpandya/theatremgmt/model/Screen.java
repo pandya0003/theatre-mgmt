@@ -1,14 +1,21 @@
 package com.parthpandya.theatremgmt.model;
 
-import jakarta.persistence.GeneratedValue;
-import org.springframework.data.annotation.Id;
-
 import java.sql.Timestamp;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Table(name = "screen")
+@Entity
 public class Screen {
+	
     @Id
     @GeneratedValue
-    int id;
+    long id;
+    
     String screenId;
     Timestamp showTime;
     String showName;

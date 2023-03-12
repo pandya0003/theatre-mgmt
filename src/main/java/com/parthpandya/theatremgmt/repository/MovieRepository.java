@@ -1,10 +1,11 @@
 package com.parthpandya.theatremgmt.repository;
 
-import com.parthpandya.theatremgmt.model.Movie;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public interface MovieRepository extends CrudRepository<Movie, Integer> {
-    Movie findByMovieName(String movie);
+import org.springframework.data.repository.CrudRepository;
+
+import com.parthpandya.theatremgmt.model.Movie;
+
+public interface MovieRepository extends CrudRepository<Movie, Long> {
+    List<Movie> findByMovieName(String movie);
 }

@@ -1,1 +1,0 @@
-INSERT INTO "movie" (id, theaterId, movieName, movieType, movieStatus, showReleaseDate, showEndDate, totalDuration) VALUES (1, 'Audi-1', 'The Shawshank Redemption', 'HINDI', 'Movie_Available', '2023-02-31 23.59.59+07:30','2023-12-31 23.59.59+07:30', 90);

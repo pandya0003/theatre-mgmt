@@ -1,55 +1,51 @@
 package com.parthpandya.theatremgmt.model;
 
-import com.parthpandya.theatremgmt.service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import java.util.Date;
-import java.util.List;
 
-@Table(name = "movie")
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
+@Table(name = "movie")
 public class Movie {
 
-    @Autowired
-    MovieService movieService;
-    public List<Screen> airedScreens(String movieName) {
-        return this.movieService.getAllScreenSessions(movieName);
-    }
-
-    public enum MovieStatus {
-        Movie_Available,
-        Movie_NotAvailable;
-    }
-
-    public enum MovieType {
-        ENGLISH,
-        HINDI;
-    }
 
     @Id
     @GeneratedValue
-    int id;
+    @Column(name = "id")
+    private long id;
+    
+    @Column(name = "theatre_id")
     String theaterId;
+
+    @Column(name = "movie_name")
     String movieName;
-    MovieType movieType;
-    MovieStatus movieStatus;
-    Date showReleaseDate;
-    Date showEndDate;
+
+    @Column(name = "movie_type")
+    String movieType;
+
+
+    @Column(name = "show_release_date")
+    String showReleaseDate;
+
+    @Column(name = "show_end_date")
+    String showEndDate;
+
+    @Column(name = "total_duration")
     int totalDuration;
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public long getId() {
+		return id;
+	}
 
-    public String getMovieName() {
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getMovieName() {
         return movieName;
     }
 
@@ -65,39 +61,31 @@ public class Movie {
         this.theaterId = theaterId;
     }
 
-    public MovieType getMovieType() {
+    public String getMovieType() {
         return movieType;
     }
 
-    public void setMovieType(MovieType movieType) {
+    public void setMovieType(String movieType) {
         this.movieType = movieType;
     }
 
-    public MovieStatus getMovieStatus() {
-        return movieStatus;
-    }
+    public String getShowReleaseDate() {
+		return showReleaseDate;
+	}
 
-    public void setMovieStatus(MovieStatus movieStatus) {
-        this.movieStatus = movieStatus;
-    }
+	public void setShowReleaseDate(String showReleaseDate) {
+		this.showReleaseDate = showReleaseDate;
+	}
 
-    public Date getShowReleaseDate() {
-        return showReleaseDate;
-    }
+	public String getShowEndDate() {
+		return showEndDate;
+	}
 
-    public void setShowReleaseDate(Date showReleaseDate) {
-        this.showReleaseDate = showReleaseDate;
-    }
+	public void setShowEndDate(String showEndDate) {
+		this.showEndDate = showEndDate;
+	}
 
-    public Date getShowEndDate() {
-        return showEndDate;
-    }
-
-    public void setShowEndDate(Date showEndDate) {
-        this.showEndDate = showEndDate;
-    }
-
-    public int getTotalDuration() {
+	public int getTotalDuration() {
         return totalDuration;
     }
 
