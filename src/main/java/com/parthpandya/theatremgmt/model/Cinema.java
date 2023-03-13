@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "cinema")
 @Entity
+@NamedQuery(name = "Cinema.findAllByCity", query = "SELECT t FROM Cinema t where t.address.city = ?1")
 public class Cinema {
     @Id
     @GeneratedValue
@@ -37,10 +38,9 @@ public class Cinema {
     @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Movie> movies = new ArrayList<>();
 
-    
 	public Cinema() {
 	}
-
+	
 	public Cinema(String cinemaName, float startTime, float closeTime) {
 		this.cinemaName = cinemaName;
 		this.startTime = startTime;

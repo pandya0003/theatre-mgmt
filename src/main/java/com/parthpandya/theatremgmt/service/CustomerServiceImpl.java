@@ -2,6 +2,7 @@ package com.parthpandya.theatremgmt.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,26 +35,12 @@ public class CustomerServiceImpl implements CustomerService {
 	
     public List<Cinema> getAllShowsByMovieAndCity(String movie, String city) {
         List<Movie> movieSelection = movieRepository.findByMovieName(movie);
-
-    	System.out.println("MCount:" + movieSelection.size());
         if(!movieSelection.isEmpty()) {
-        	List<Cinema> cinemas = new ArrayList<Cinema>();
-        	cinemaRepository.findAll().forEach(cinemas::add);
-
-        	System.out.println("Count:" + movieSelection.get(0).getId());
-        	/*cinemas = cinemas.stream()
-        	           .filter(e -> e.getMovies().stream().anyMatch(m -> m.getId() == movieSelection.get(0).getId()))
-        	           .collect(Collectors.toList());
-        	*/
-        	for(Movie m: cinemas.get(0).getMovies()) {
-        		System.out.println(m.getMovieName());
-        	}
-	        /*for(int i=6; i<24;i++) { 
-	        	if(i+totalDuration < 24)
-	        		this.movieSessions.add((float) (i+totalDuration)); 
-	        }*/
-	    	 
-	        return cinemas; 
+        	List<Cinema> cinemas = cinemaRepository.findAllByCity(city);
+        	cinemas = cinemas.stream()
+     	           .filter(e -> e.getMovies().stream().anyMatch(m -> m.getMovieName().equals(movie)))
+     	           .collect(Collectors.toList());
+        	return cinemas;
         } else {
         	return new ArrayList<>();
         }

@@ -18,6 +18,8 @@ public class Movie {
     @Column(name = "movie_id")
     private long id;
     
+    
+    //TODO.Change to lazy. Performance killer
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cinema_id")
     Cinema cinema;
