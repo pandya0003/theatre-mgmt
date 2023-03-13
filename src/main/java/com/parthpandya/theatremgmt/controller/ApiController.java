@@ -1,7 +1,7 @@
 package com.parthpandya.theatremgmt.controller;
 
 import com.parthpandya.theatremgmt.model.Screen;
-import com.parthpandya.theatremgmt.service.MovieService;
+import com.parthpandya.theatremgmt.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,18 +15,18 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class ApiController {
 
-    private MovieService movieService;
+    private CustomerService movieService;
     
     @Autowired
-    public ApiController(MovieService movieService) {
+    public ApiController(CustomerService movieService) {
         this.movieService = movieService;
     }
 
 
     @GetMapping("/screens")
-    public List<Screen> listAllShows(String movieSelected, String[] geoCoordinates, Optional<String> currentCity) {
+    public List<?> listAllShows(String movieSelected, String[] geoCoordinates, Optional<String> currentCity) {
         if(currentCity.isPresent()) {
-            return this.movieService.getAllShowsByMovieAndCity(movieSelected, currentCity);
+            return this.movieService.getAllShowsByMovieAndCity(movieSelected, currentCity.get());
         } else {
             //return this.movieService.getAllShowsByMovieAndGeoCoordinates(movieSelected, geoCoordinates);
             return new ArrayList<>();

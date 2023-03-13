@@ -1,32 +1,32 @@
 package com.parthpandya.theatremgmt.model;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "movie")
 public class Movie {
 
-
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "movie_id")
     private long id;
     
-    @Column(name = "theatre_id")
-    String theaterId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cinema_id")
+    Cinema cinema;
 
     @Column(name = "movie_name")
     String movieName;
 
     @Column(name = "movie_type")
     String movieType;
-
 
     @Column(name = "show_release_date")
     String showReleaseDate;
@@ -36,8 +36,19 @@ public class Movie {
 
     @Column(name = "total_duration")
     int totalDuration;
+    
+    public Movie(){}
+	
+    public Movie(String movieName, String movieType, String showReleaseDate, String showEndDate,
+			int totalDuration) {
+		this.movieName = movieName;
+		this.movieType = movieType;
+		this.showReleaseDate = showReleaseDate;
+		this.showEndDate = showEndDate;
+		this.totalDuration = totalDuration;
+	}
 
-    public long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -51,14 +62,6 @@ public class Movie {
 
     public void setMovieName(String movieName) {
         this.movieName = movieName;
-    }
-
-    public String getTheaterId() {
-        return theaterId;
-    }
-
-    public void setTheaterId(String theaterId) {
-        this.theaterId = theaterId;
     }
 
     public String getMovieType() {
@@ -92,4 +95,5 @@ public class Movie {
     public void setTotalDuration(int totalDuration) {
         this.totalDuration = totalDuration;
     }
+
 }

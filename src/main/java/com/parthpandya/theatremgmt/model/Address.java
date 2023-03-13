@@ -1,8 +1,12 @@
 package com.parthpandya.theatremgmt.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,26 +15,34 @@ public class Address {
 
     @Id
     @GeneratedValue
+    @Column(name = "address_id")
     private long id;
-    String streetNo;
+    String street;
     String landmark;
     String city;
-    String pinCode;
+    String zip;
     String state;
     long latitude;
     long longitude;
     
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cinema_id")
+    Cinema cinema;
+    
+    public Address() {
+	}
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getStreetNo() {
-		return streetNo;
+	public String getStreet() {
+		return street;
 	}
-	public void setStreetNo(String streetNo) {
-		this.streetNo = streetNo;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 	public String getLandmark() {
 		return landmark;
@@ -45,10 +57,10 @@ public class Address {
 		this.city = city;
 	}
 	public String getPinCode() {
-		return pinCode;
+		return zip;
 	}
 	public void setPinCode(String pinCode) {
-		this.pinCode = pinCode;
+		this.zip = pinCode;
 	}
 	public String getState() {
 		return state;
