@@ -51,7 +51,7 @@ public class ApiController {
     	Order purchaseOrder = new Gson().fromJson(order, Order.class);
     	try {
     		Transaction result = this.movieService.checkout(purchaseOrder); 
-            return new ResponseEntity<>("Booking transaction# "+ String.valueOf(result.getId()), HttpStatus.CREATED);
+            return new ResponseEntity<>("{  \"transactionId\" : "+ String.valueOf(result.getId()) +" }", HttpStatus.CREATED);
         } catch (Exception ex) {
         	//TODO.Move to global controller advise
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Exception occurred", ex);
