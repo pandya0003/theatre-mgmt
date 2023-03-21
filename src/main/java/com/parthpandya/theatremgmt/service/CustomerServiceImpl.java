@@ -2,6 +2,7 @@ package com.parthpandya.theatremgmt.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,14 @@ import org.springframework.stereotype.Service;
 
 import com.parthpandya.theatremgmt.model.Cinema;
 import com.parthpandya.theatremgmt.model.Movie;
+import com.parthpandya.theatremgmt.model.Order;
 import com.parthpandya.theatremgmt.model.Screen;
+import com.parthpandya.theatremgmt.model.Transaction;
+import com.parthpandya.theatremgmt.payment.AbstractPayment;
 import com.parthpandya.theatremgmt.repository.CinemaRepository;
 import com.parthpandya.theatremgmt.repository.MovieRepository;
 import com.parthpandya.theatremgmt.repository.ScreenRepository;
+import com.parthpandya.theatremgmt.repository.TransactionRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -21,19 +26,23 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-	@Autowired
-	@Qualifier("movieRepository")
-    private MovieRepository movieRepository;
+	private MovieRepository movieRepository;
+	private CinemaRepository cinemaRepository;
+	private ScreenRepository screenRepository;
+	private TransactionRepository transactionRepository;
+	
 	
 	@Autowired
-	@Qualifier("cinemaRepository")
-    private CinemaRepository cinemaRepository;
+    public CustomerServiceImpl(MovieRepository movieRepository, CinemaRepository cinemaRepository,
+			ScreenRepository screenRepository, TransactionRepository transactionRepository) {
+		super();
+		this.movieRepository = movieRepository;
+		this.cinemaRepository = cinemaRepository;
+		this.screenRepository = screenRepository;
+		this.transactionRepository = transactionRepository;
+	}
 
-	@Autowired
-	@Qualifier("screenRepository")
-    private ScreenRepository screenRepository;
-	
-    public List<Cinema> getAllShowsByMovieAndCity(String movie, String city) {
+	public List<Cinema> getAllShowsByMovieAndCity(String movie, String city) {
         List<Movie> movieSelection = movieRepository.findByMovieName(movie);
         if(!movieSelection.isEmpty()) {
         	List<Cinema> cinemas = cinemaRepository.findAllByCity(city);
@@ -51,9 +60,14 @@ public class CustomerServiceImpl implements CustomerService {
         return new ArrayList<>();
     }
 
-    public List<Screen> getAllScreenSessions(String movieName) {
-        //TODO.PP
-        return new ArrayList<>();
-    }
+	@Override
+	public Transaction checkout(Order order) {
+		Optional<Screen> s = this.screenRepository.findById(order.getScreen().getId());
+		if(s.isPresent()) 
+			order.setScreen(s.get());
+		
+		Optional<Transaction> newBooking = AbstractPayment.checkoutBooking(order);
+		return this.transactionRepository.save(newBooking.get());
+	}
 
 }
