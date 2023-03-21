@@ -28,9 +28,12 @@ Note: Database initially preloaded with dummy data using data.sql.
 
 ### Test
 
-__Screens/Shows by Movie & City__
+1) __Screens/Shows by Movie & City__
 
-[Request](http://localhost:8080/api/screens?movieSelected=Avatar&currentCity=Lakeland) - http://localhost:8080/api/screens?movieSelected=Avatar&currentCity=Lakeland
+[Request](http://localhost:8080/api/screens?movieSelected=Avatar&currentCity=Lakeland) 
+- http://localhost:8080/api/screens?movieSelected=Avatar&currentCity=Lakeland
+
+[Response]
 
 ```
 [
@@ -125,11 +128,14 @@ __Screens/Shows by Movie & City__
 ]
 
 ```
-__Checkout / Booking__
+2) __Checkout / Booking__
 
-[URL](http://localhost:8080/api/checkout) - http://localhost:8080/api/checkout
+[Request](http://localhost:8080/api/checkout) 
+- http://localhost:8080/api/checkout
 
 [Body]
+
+```
 {
     "userEmail": "pandya.parth@live.com",
     "qty": 7,
@@ -138,6 +144,10 @@ __Checkout / Booking__
     },
     "paymentMethod": ""
 }
+
+```
+
+[Response]
 
 ```
 {  
