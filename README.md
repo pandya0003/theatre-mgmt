@@ -140,5 +140,9 @@ __Checkout / Booking__
 }
 
 ```
-
+{  
+	"transactionId" : 1 
+}
 ```
+
+There is postman JSON (Theatre Mgt.postman_collection.json) exported into project which can be used as reference point to try out all the supported endpoint.

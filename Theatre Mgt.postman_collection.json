@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "ee2534c9-c05f-47d0-bc21-0582f28303f6",
+		"name": "Theatre Mgt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1935467"
+	},
+	"item": [
+		{
+			"name": "Screens",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJmNzE2M2U2ZS1mMmIwLTQ5ZmQtYjFjMC0yNTA3YWFhYjIyOWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mY2IyYjM3Yi01ZGEwLTQ2NmItOWI4My0wMDE0YjY3YTdjNzgvIiwiaWF0IjoxNjczNTQxMDg4LCJuYmYiOjE2NzM1NDEwODgsImV4cCI6MTY3MzU0NDk4OCwiYWlvIjoiRTJaZ1lQaHFwSGt5dXNEOHZVdkZncDhGc3ozekFBPT0iLCJhcHBpZCI6ImY3MTYzZTZlLWYyYjAtNDlmZC1iMWMwLTI1MDdhYWFiMjI5ZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2ZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OC8iLCJvaWQiOiIyM2NjOTVhOC03MzI1LTQ2ZmMtYWMxNS1mNzAyMGMwODM1NDQiLCJyaCI6IjAuQVFzQWU3T3lfS0JkYTBhYmd3QVV0bnA4ZUc0LUZ2ZXc4djFKc2NBbEI2cXJJcDBMQUFBLiIsInN1YiI6IjIzY2M5NWE4LTczMjUtNDZmYy1hYzE1LWY3MDIwYzA4MzU0NCIsInRpZCI6ImZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OCIsInV0aSI6IlhfU2ItZVljRkVTb19CaHQ2NHNxQUEiLCJ2ZXIiOiIxLjAiLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJodHRwczovL2JheWVyLmNvbS9hcHBfZGlzcGxheW5hbWUiOiJQZXJtaXQgUmVxdWVzdHMgTWFuYWdlci1QUk9EIn0.jSCca3mQ_zm6lQyxn2qPxVcD445UXtay1f6BigKQkrXFklvNDJ7s8PF1GhKiEObjh4WiGaS_eZlG1o9K2_agi5raSpL4pDgF_pNFycjKVfzBymE3m24G7E6cGsl6DSqqK7yyD5JlRRgC73mHH59ZEvymM1AvwebIsVZ99tYuzPpWy_on3u9jHNm7ek4XSI1UMepVSdHGQtn_jjjyPczQDQjzHqiIu9BHqKJCbrPmpbe9M7ni0bo_0n-UfL1EOoxECKF1mBDEj-0WzMfBl3IiK71GOm4Yir0AKEHA16-TAn42dBG3cUzBdAIQQEcf_N7JNTfkQc2CQ3b6UXUwXeHsQw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/screens?currentCity=Lakeland&movieSelected=Avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"screens"
+					],
+					"query": [
+						{
+							"key": "geoCoordinates",
+							"value": "[28.03, 81.94]",
+							"disabled": true
+						},
+						{
+							"key": "currentCity",
+							"value": "Lakeland"
+						},
+						{
+							"key": "movieSelected",
+							"value": "Avatar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJmNzE2M2U2ZS1mMmIwLTQ5ZmQtYjFjMC0yNTA3YWFhYjIyOWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mY2IyYjM3Yi01ZGEwLTQ2NmItOWI4My0wMDE0YjY3YTdjNzgvIiwiaWF0IjoxNjczNTQxMDg4LCJuYmYiOjE2NzM1NDEwODgsImV4cCI6MTY3MzU0NDk4OCwiYWlvIjoiRTJaZ1lQaHFwSGt5dXNEOHZVdkZncDhGc3ozekFBPT0iLCJhcHBpZCI6ImY3MTYzZTZlLWYyYjAtNDlmZC1iMWMwLTI1MDdhYWFiMjI5ZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2ZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OC8iLCJvaWQiOiIyM2NjOTVhOC03MzI1LTQ2ZmMtYWMxNS1mNzAyMGMwODM1NDQiLCJyaCI6IjAuQVFzQWU3T3lfS0JkYTBhYmd3QVV0bnA4ZUc0LUZ2ZXc4djFKc2NBbEI2cXJJcDBMQUFBLiIsInN1YiI6IjIzY2M5NWE4LTczMjUtNDZmYy1hYzE1LWY3MDIwYzA4MzU0NCIsInRpZCI6ImZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OCIsInV0aSI6IlhfU2ItZVljRkVTb19CaHQ2NHNxQUEiLCJ2ZXIiOiIxLjAiLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJodHRwczovL2JheWVyLmNvbS9hcHBfZGlzcGxheW5hbWUiOiJQZXJtaXQgUmVxdWVzdHMgTWFuYWdlci1QUk9EIn0.jSCca3mQ_zm6lQyxn2qPxVcD445UXtay1f6BigKQkrXFklvNDJ7s8PF1GhKiEObjh4WiGaS_eZlG1o9K2_agi5raSpL4pDgF_pNFycjKVfzBymE3m24G7E6cGsl6DSqqK7yyD5JlRRgC73mHH59ZEvymM1AvwebIsVZ99tYuzPpWy_on3u9jHNm7ek4XSI1UMepVSdHGQtn_jjjyPczQDQjzHqiIu9BHqKJCbrPmpbe9M7ni0bo_0n-UfL1EOoxECKF1mBDEj-0WzMfBl3IiK71GOm4Yir0AKEHA16-TAn42dBG3cUzBdAIQQEcf_N7JNTfkQc2CQ3b6UXUwXeHsQw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n    \"user_email\": \"pandya.parth@live.com\",\n    \"qty\": 7,\n    \"screen_id\": 1,\n    \"payment_method\": \"\"\n  \n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/checkout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"checkout"
+					],
+					"query": [
+						{
+							"key": "geoCoordinates",
+							"value": "[28.03, 81.94]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJmNzE2M2U2ZS1mMmIwLTQ5ZmQtYjFjMC0yNTA3YWFhYjIyOWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mY2IyYjM3Yi01ZGEwLTQ2NmItOWI4My0wMDE0YjY3YTdjNzgvIiwiaWF0IjoxNjczNTQxMDg4LCJuYmYiOjE2NzM1NDEwODgsImV4cCI6MTY3MzU0NDk4OCwiYWlvIjoiRTJaZ1lQaHFwSGt5dXNEOHZVdkZncDhGc3ozekFBPT0iLCJhcHBpZCI6ImY3MTYzZTZlLWYyYjAtNDlmZC1iMWMwLTI1MDdhYWFiMjI5ZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2ZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OC8iLCJvaWQiOiIyM2NjOTVhOC03MzI1LTQ2ZmMtYWMxNS1mNzAyMGMwODM1NDQiLCJyaCI6IjAuQVFzQWU3T3lfS0JkYTBhYmd3QVV0bnA4ZUc0LUZ2ZXc4djFKc2NBbEI2cXJJcDBMQUFBLiIsInN1YiI6IjIzY2M5NWE4LTczMjUtNDZmYy1hYzE1LWY3MDIwYzA4MzU0NCIsInRpZCI6ImZjYjJiMzdiLTVkYTAtNDY2Yi05YjgzLTAwMTRiNjdhN2M3OCIsInV0aSI6IlhfU2ItZVljRkVTb19CaHQ2NHNxQUEiLCJ2ZXIiOiIxLjAiLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJodHRwczovL2JheWVyLmNvbS9hcHBfZGlzcGxheW5hbWUiOiJQZXJtaXQgUmVxdWVzdHMgTWFuYWdlci1QUk9EIn0.jSCca3mQ_zm6lQyxn2qPxVcD445UXtay1f6BigKQkrXFklvNDJ7s8PF1GhKiEObjh4WiGaS_eZlG1o9K2_agi5raSpL4pDgF_pNFycjKVfzBymE3m24G7E6cGsl6DSqqK7yyD5JlRRgC73mHH59ZEvymM1AvwebIsVZ99tYuzPpWy_on3u9jHNm7ek4XSI1UMepVSdHGQtn_jjjyPczQDQjzHqiIu9BHqKJCbrPmpbe9M7ni0bo_0n-UfL1EOoxECKF1mBDEj-0WzMfBl3IiK71GOm4Yir0AKEHA16-TAn42dBG3cUzBdAIQQEcf_N7JNTfkQc2CQ3b6UXUwXeHsQw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					],
+					"query": [
+						{
+							"key": "geoCoordinates",
+							"value": "[28.03, 81.94]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
