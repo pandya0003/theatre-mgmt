@@ -26,35 +26,25 @@ import jakarta.validation.Valid;
 @RequestMapping("/api")
 public class ApiController {
 
-    private CustomerService movieService;
-    
-    @Autowired
-    public ApiController(CustomerService movieService) {
-        this.movieService = movieService;
-    }
+	private CustomerService movieService;
 
+	@Autowired
+	public ApiController(CustomerService movieService) {
+		this.movieService = movieService;
+	}
 
-    @GetMapping("/screens")
-    public List<Cinema> listAllShows(String movieSelected, String[] geoCoordinates, Optional<String> currentCity) {
-        String city = currentCity.isPresent() ? currentCity.get(): "Lakeland";
-        try {
-        	return this.movieService.getAllShowsByMovieAndCity(movieSelected, city);
-        } catch (Exception ex) {
-        	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Exception occurred", ex);
-        }
-        
-    }
-    
-    //TODO.order can be separate dto here but using existing pojo
-    @PostMapping("/checkout")
-    public ResponseEntity<String> checkout(@Valid @RequestBody String order) {
-    	Order purchaseOrder = new Gson().fromJson(order, Order.class);
-    	try {
-    		Transaction result = this.movieService.checkout(purchaseOrder); 
-            return new ResponseEntity<>("{  \"transactionId\" : "+ String.valueOf(result.getId()) +" }", HttpStatus.CREATED);
-        } catch (Exception ex) {
-        	//TODO.Move to global controller advise
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Exception occurred", ex);
-        }
-    }
+	@GetMapping("/screens")
+	public List<Cinema> listAllShows(String movieSelected, String[] geoCoordinates, Optional<String> currentCity) {
+		String city = currentCity.isPresent() ? currentCity.get() : "Lakeland";
+		return this.movieService.getAllShowsByMovieAndCity(movieSelected, city);
+	}
+
+	// TODO.order can be separate dto here but using existing pojo
+	@PostMapping("/checkout")
+	public ResponseEntity<String> checkout(@Valid @RequestBody String order) {
+		Order purchaseOrder = new Gson().fromJson(order, Order.class);
+		Transaction result = this.movieService.checkout(purchaseOrder);
+		return new ResponseEntity<>("{  \"transactionId\" : " + String.valueOf(result.getId()) + " }",
+				HttpStatus.CREATED);
+	}
 }
